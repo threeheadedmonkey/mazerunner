@@ -10,9 +10,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
-        [SerializeField] private float m_RunSpeed;
+        public bool m_IsWalking;
+		public bool m_IsSneaking;
+		public bool m_IsRunning;
+        public float m_WalkSpeed;
+        public float m_RunSpeed;
+		public float m_SneakSpeed;
+		public float speed;
+
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -94,7 +99,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            float speed;
+            //float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
@@ -199,7 +204,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void GetInput(out float speed)
+		private void GetInput(out float speed)
         {
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -210,10 +215,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+			m_IsWalking = !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey (KeyCode.LeftControl);
+			m_IsRunning = Input.GetKey (KeyCode.LeftShift);
+			m_IsSneaking = Input.GetKey (KeyCode.LeftControl);
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+			speed = m_IsWalking ? m_WalkSpeed : m_IsSneaking ? m_SneakSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
