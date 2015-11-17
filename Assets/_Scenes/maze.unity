@@ -635,8 +635,8 @@ MonoBehaviour:
   - {fileID: 1930791285}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 2
-  acousticAlertRange: 2
+  visualAlertRange: 8
+  acousticAlertRange: 8
 --- !u!195 &240965508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -752,8 +752,8 @@ MonoBehaviour:
   - {fileID: 857576602}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 2
-  acousticAlertRange: 2
+  visualAlertRange: 5
+  acousticAlertRange: 5
 --- !u!195 &277827785
 NavMeshAgent:
   m_ObjectHideFlags: 0
