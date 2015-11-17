@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public enum PlayerSpeedMode {
 	isRunning,
@@ -14,6 +15,7 @@ public class MoveTo : MonoBehaviour
 	
 	public Transform[] points;
 	public Transform player;
+    public Text gameOver;
 	public float visualAlertRange;
 	public float acousticAlertRange;
 
@@ -91,7 +93,15 @@ public class MoveTo : MonoBehaviour
 		return (playerDistance < visualAlertRange);		
 	}
 
-	/*bool CheckAcousticAlert () {
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "FPSController")
+        {
+            gameOver.enabled = true;
+        }
+    }
+
+    /*bool CheckAcousticAlert () {
 
 		if () {
 			return true;
@@ -101,7 +111,7 @@ public class MoveTo : MonoBehaviour
 		
 	}
 */
-	void SetAcousticAlertRange () {
+    void SetAcousticAlertRange () {
 		if (fpc.m_IsRunning) {
 			acousticAlertRange = 20;
 		} else if (fpc.m_IsSneaking) {
