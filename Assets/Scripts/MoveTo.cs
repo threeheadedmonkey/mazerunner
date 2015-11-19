@@ -16,15 +16,20 @@ public class MoveTo : MonoBehaviour
 	public Transform[] points;
 	public Transform player;
     public Text gameOver;
+	//public bool visualAlertON;
 	public float visualAlertRange;
-	public float acousticAlertRange;
+	//public bool acousticAlertON;
+	public float run_acousticAlertRange;
+	public float walk_acousticAlertRange;
+	public float sneak_acousticAlertRange;
+	private float acousticAlertRange;
+
 
 
 
 	private FirstPersonController fpc;
 	private int destPoint = 0;
 	private NavMeshAgent agent;
-	private bool alertMode;
 	private PlayerSpeedMode playerSpeedMode;
 	private float playerSpeed;
 	private float playerDistance;
@@ -41,8 +46,8 @@ public class MoveTo : MonoBehaviour
 
 		fpc = GameObject.FindObjectOfType<FirstPersonController>();
 
-		runSpeed = fpc.m_RunSpeed;
-		walkSpeed = fpc.m_WalkSpeed;
+		//runSpeed = fpc.m_RunSpeed;
+		//walkSpeed = fpc.m_WalkSpeed;
 
 		//fpc.m_RunSpeed
 		
@@ -76,8 +81,8 @@ public class MoveTo : MonoBehaviour
 		playerSpeed = fpc.speed;
 
 		SetAcousticAlertRange();
-	
-		if (playerDistance < acousticAlertRange ) {
+
+		if (playerDistance < acousticAlertRange || playerDistance < visualAlertRange ) {
 			agent.destination = player.position;
 		} else {
 			agent.destination = points [destPoint].position;
@@ -87,10 +92,6 @@ public class MoveTo : MonoBehaviour
 		if (agent.remainingDistance < 0.5f)
 			GotoNextPoint();
 
-	}
-
-	bool CheckVisualAlert () {
-		return (playerDistance < visualAlertRange);		
 	}
 
     void OnCollisionEnter(Collision col)
@@ -113,11 +114,11 @@ public class MoveTo : MonoBehaviour
 */
     void SetAcousticAlertRange () {
 		if (fpc.m_IsRunning) {
-			acousticAlertRange = 20;
+			acousticAlertRange = run_acousticAlertRange;
 		} else if (fpc.m_IsSneaking) {
-			acousticAlertRange = 7;
+			acousticAlertRange = sneak_acousticAlertRange;
 		} else {
-			acousticAlertRange = 13;
+			acousticAlertRange = walk_acousticAlertRange;
 		}
 	}
 

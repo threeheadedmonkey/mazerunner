@@ -635,8 +635,10 @@ MonoBehaviour:
   - {fileID: 1930791285}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 8
-  acousticAlertRange: 8
+  visualAlertRange: 0
+  run_acousticAlertRange: 25
+  walk_acousticAlertRange: 15
+  sneak_acousticAlertRange: 5
 --- !u!195 &240965508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -752,8 +754,10 @@ MonoBehaviour:
   - {fileID: 857576602}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 5
-  acousticAlertRange: 5
+  visualAlertRange: 0
+  run_acousticAlertRange: 25
+  walk_acousticAlertRange: 15
+  sneak_acousticAlertRange: 5
 --- !u!195 &277827785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1270,8 +1274,10 @@ MonoBehaviour:
   - {fileID: 135059602}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 2
-  acousticAlertRange: 2
+  visualAlertRange: 0
+  run_acousticAlertRange: 25
+  walk_acousticAlertRange: 15
+  sneak_acousticAlertRange: 5
 --- !u!195 &398890978
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1558,7 +1564,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_WalkSpeed
-      value: 12
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_SneakSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
