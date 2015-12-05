@@ -170,7 +170,7 @@ Transform:
   m_LocalScale: {x: 36.254261, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!114 &31882485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!1 &80269600
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ GameObject:
   - 135: {fileID: 80269603}
   - 23: {fileID: 80269602}
   m_Layer: 0
-  m_Name: wp1 (3)
+  m_Name: wp3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +363,7 @@ GameObject:
   - 135: {fileID: 135059604}
   - 23: {fileID: 135059603}
   m_Layer: 0
-  m_Name: wp3 (2)
+  m_Name: wp3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +586,7 @@ GameObject:
   - 122: {fileID: 240965506}
   - 54: {fileID: 240965505}
   m_Layer: 0
-  m_Name: NPC (3)
+  m_Name: NPC_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,11 +710,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240965504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.399994, y: 1, z: -145}
+  m_LocalPosition: {x: -16.5216675, y: 0, z: -10.2407227}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1972464745}
+  m_RootOrder: 2
 --- !u!1 &277827783
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +731,7 @@ GameObject:
   - 122: {fileID: 277827790}
   - 54: {fileID: 277827791}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: NPC_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,11 +829,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 277827783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .68599999, y: 1, z: 13.5249996}
+  m_LocalPosition: {x: -165.235657, y: 0, z: 148.284271}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1972464745}
+  m_RootOrder: 0
 --- !u!122 &277827790
 Halo:
   m_ObjectHideFlags: 0
@@ -1240,7 +1240,7 @@ GameObject:
   - 122: {fileID: 398890976}
   - 54: {fileID: 398890983}
   m_Layer: 0
-  m_Name: NPC (2)
+  m_Name: NPC_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,11 +1349,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 398890975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.399994, y: 1, z: 131.300003}
+  m_LocalPosition: {x: -16.5216675, y: 0, z: 266.059265}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1972464745}
+  m_RootOrder: 1
 --- !u!54 &398890983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1585,7 +1585,7 @@ GameObject:
   - 135: {fileID: 488443519}
   - 23: {fileID: 488443518}
   m_Layer: 0
-  m_Name: wp2
+  m_Name: wp1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1949,7 +1949,7 @@ GameObject:
   - 135: {fileID: 857576604}
   - 23: {fileID: 857576603}
   m_Layer: 0
-  m_Name: wp3
+  m_Name: wp1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2022,7 +2022,7 @@ GameObject:
   - 135: {fileID: 977261660}
   - 23: {fileID: 977261659}
   m_Layer: 0
-  m_Name: wp2 (3)
+  m_Name: wp3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2114,7 +2114,7 @@ RectTransform:
   - {fileID: 710270316}
   - {fileID: 295345045}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2405,7 +2405,7 @@ GameObject:
   - 135: {fileID: 1196321106}
   - 23: {fileID: 1196321105}
   m_Layer: 0
-  m_Name: wp2 (2)
+  m_Name: wp2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2478,7 +2478,7 @@ GameObject:
   - 135: {fileID: 1271984143}
   - 23: {fileID: 1271984142}
   m_Layer: 0
-  m_Name: wp1
+  m_Name: wp1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3292,7 +3292,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1900590670}
   m_Layer: 0
-  m_Name: Waypoints_NPC1
+  m_Name: Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3318,7 +3318,7 @@ Transform:
   - {fileID: 977261658}
   - {fileID: 1930791285}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!1 &1930791281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3331,7 @@ GameObject:
   - 135: {fileID: 1930791283}
   - 23: {fileID: 1930791282}
   m_Layer: 0
-  m_Name: wp3 (3)
+  m_Name: wp3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3538,6 +3538,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957731170}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1972464744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1972464745}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1972464745
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972464744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 165.921661, y: 1, z: -134.759277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 277827789}
+  - {fileID: 398890982}
+  - {fileID: 240965512}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1974911293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,7 +3726,7 @@ GameObject:
   - 135: {fileID: 2066626125}
   - 23: {fileID: 2066626124}
   m_Layer: 0
-  m_Name: wp1 (2)
+  m_Name: wp2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
