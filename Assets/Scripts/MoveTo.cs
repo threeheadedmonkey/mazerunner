@@ -35,6 +35,7 @@ public class MoveTo : MonoBehaviour
 	private float playerDistance;
 	private float runSpeed;
 	private float walkSpeed;
+	private bool visualAlert; 
 
 	//private float playerSpeed;
 	//private PlayerSpeedMode playerSpeedMode; 
@@ -82,7 +83,14 @@ public class MoveTo : MonoBehaviour
 
 		SetAcousticAlertRange();
 
-		if (playerDistance < acousticAlertRange || playerDistance < visualAlertRange ) {
+		CheckVisualAlert ();
+
+		Debug.Log (visualAlert);
+
+		if (playerDistance < acousticAlertRange) {
+			agent.destination = player.position;
+
+		} else if (visualAlert) {
 			agent.destination = player.position;
 		} else {
 			agent.destination = points [destPoint].position;
@@ -102,16 +110,36 @@ public class MoveTo : MonoBehaviour
         }
     }
 
-    /*bool CheckAcousticAlert () {
+    void CheckVisualAlert() {
+		RaycastHit hit;
 
-		if () {
-			return true;
+		Vector3 fwd = agent.transform.TransformDirection (Vector3.forward);
+		Vector3 targetDir = player.transform.position - agent.transform.position;
+	
+		Debug.DrawRay (agent.transform.position, targetDir, Color.cyan);
+		Debug.DrawRay (agent.transform.position, fwd * visualAlertRange, Color.yellow);
+
+		/*if (Physics.Raycast(agent.transform.position, fwd, out hit, 50.0F)) {
+			Debug.Log (hit.collider.gameObject.name);
+
+		}*/
+
+		if (Vector3.Angle (targetDir, agent.transform.forward) < 80) {
+			if (Physics.Raycast(agent.transform.position, targetDir, out hit, visualAlertRange)) {
+				if (hit.collider.gameObject.name.Equals("Player")) {
+					Debug.Log("Player has been seen");
+					visualAlert = true;
+				} else {
+					visualAlert = false;
+				}
+			}
 		}
 
-		return false;
-		
+
+
+
 	}
-*/
+
     void SetAcousticAlertRange () {
 		if (fpc.m_IsRunning) {
 			acousticAlertRange = run_acousticAlertRange;
