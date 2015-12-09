@@ -13,12 +13,14 @@ public class CameraGUI : MonoBehaviour {
     public Text gameOver;
     public Text cooldownDisplay;
     public Transform redScreen;
+    public Transform blueScreen; // temporäre Lösung für das Wasser
 
     private float distanceLeft;
     private float coolDown;
     private string currentIdentity;
     private float distanceToNPC;
     private Color screenColor;
+    private bool isSwimming;
     // Vector3 lastPosition;
 
     // Use this for initialization
@@ -32,6 +34,8 @@ public class CameraGUI : MonoBehaviour {
         screenColor = redScreen.GetComponent<SpriteRenderer>().material.color;
         screenColor.a = 0.0f;
         redScreen.GetComponent<SpriteRenderer>().material.color = screenColor;
+
+        isSwimming = false;
     }
 
     // Update is called once per frame
