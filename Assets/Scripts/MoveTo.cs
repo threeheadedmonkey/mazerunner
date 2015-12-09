@@ -37,6 +37,8 @@ public class MoveTo : MonoBehaviour
 	private float walkSpeed;
 	private bool visualAlert; 
 	private float alertStartTime;
+    private float haloSize; // zum Färben der Kamera nötig
+
 	//private float playerSpeed;
 	//private PlayerSpeedMode playerSpeedMode; 
 	
@@ -46,6 +48,8 @@ public class MoveTo : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 
 		fpc = GameObject.FindObjectOfType<FirstPersonController>();
+
+        haloSize = 50f;
 
 		//runSpeed = fpc.m_RunSpeed;
 		//walkSpeed = fpc.m_WalkSpeed;
@@ -95,6 +99,11 @@ public class MoveTo : MonoBehaviour
 			agent.speed = 8;
 			agent.destination = points [destPoint].position;
 		}
+
+        if(playerDistance < 50 )
+        {
+            fpc.GetComponent<CameraGUI>().setNPCDistance(playerDistance);
+        }
 		// Choose the next destination point when the agent gets
 		// close to the current one.
 		if (agent.remainingDistance < 0.5f)

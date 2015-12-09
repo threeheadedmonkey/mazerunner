@@ -12,9 +12,13 @@ public class CameraGUI : MonoBehaviour {
     public Text distanceDisplay;
     public Text gameOver;
     public Text cooldownDisplay;
-    private float distanceLeft = 0;
+    public Transform redScreen;
+
+    private float distanceLeft;
     private float coolDown;
     private string currentIdentity;
+    private float distanceToNPC;
+    private Color screenColor;
     // Vector3 lastPosition;
 
     // Use this for initialization
@@ -22,6 +26,12 @@ public class CameraGUI : MonoBehaviour {
     {
         gameOver.enabled = false;
         distanceLeft = Vector3.Distance(player.position, finish.position);
+
+        distanceToNPC = 100;
+
+        screenColor = redScreen.GetComponent<SpriteRenderer>().material.color;
+        screenColor.a = 0.0f;
+        redScreen.GetComponent<SpriteRenderer>().material.color = screenColor;
     }
 
     // Update is called once per frame
@@ -39,11 +49,22 @@ public class CameraGUI : MonoBehaviour {
         }
         // coolDown = controller.GetRemainingCoolDownTime();
         cooldownDisplay.text = currentIdentity + ": " +
-                Mathf.Round(controller.GetRemainingCoolDownTime() * 100f) / 100f; ;
+                Mathf.Round(controller.GetRemainingCoolDownTime() * 100f) / 100f;
+
+        // alpha channel des roten Screens wird durch Gegner-Distanz bestimmt
+        if( distanceToNPC < 50) {
+               screenColor = redScreen.GetComponent<Renderer>().material.color;
+               screenColor.a = 0.5f - distanceToNPC/100f;
+               redScreen.GetComponent<Renderer>().material.color = screenColor;
+        } else {
+               screenColor = redScreen.GetComponent<Renderer>().material.color;
+               screenColor.a = 0.0f;
+               redScreen.GetComponent<Renderer>().material.color = screenColor;
+        }
     }
 
-    public void colorByNPCDistance()
-    {
-
+    // Distanz wird in NPC Klasse berechnet und hier gesetzt
+    public void setNPCDistance(float npcDistance) {
+        distanceToNPC = npcDistance;
     }
 }
