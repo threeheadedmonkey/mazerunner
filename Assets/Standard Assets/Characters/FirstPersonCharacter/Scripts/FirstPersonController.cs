@@ -136,6 +136,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+
+            // Spieler bewegt sich oder nicht
 			if (!CheckMovement ()) {
 				m_IsWalking = false;
 				m_IsRunning = false;
@@ -355,8 +357,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			}
 		}
 
-		private float GetRemainingCoolDownTime(){
-			return idChangeCoolDown - (Time.time - lastIdChangeTime);
+		public float GetRemainingCoolDownTime(){
+            float remainingCooldown = idChangeCoolDown - (Time.time - lastIdChangeTime);
+            if (remainingCooldown > 0) return remainingCooldown;
+            else return 0;
     
 		}
 	}
