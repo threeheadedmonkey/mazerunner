@@ -10,16 +10,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+		// movement states
         public bool m_IsWalking;
 		public bool m_IsSneaking;
 		public bool m_IsRunning;
+		public bool m_IsStandingStill;
+
+		private Vector3 oldPosition;
+
+		// movement speeds
         public float m_WalkSpeed;
         public float m_RunSpeed;
 		public float m_SneakSpeed;
+		public float m_JumpSpeed; //height
 		public float speed;
 
+		// character identities
+		public bool m_IsRunner;
+		public bool m_IsSwimmer;
+		public bool m_IsClimber;
+		public float idChangeCoolDown;
+		public bool isIdChangePossible;
+
+		private float lastIdChangeTime;
+
+
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
+ 
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
         [SerializeField] private MouseLook m_MouseLook;
@@ -60,6 +77,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+			oldPosition = transform.position;
+			m_IsRunner = true;
+			isIdChangePossible = true;
         }
 
 
@@ -101,6 +122,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             //float speed;
             GetInput(out speed);
+
+
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
@@ -113,6 +136,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+			if (!CheckMovement ()) {
+				m_IsWalking = false;
+				m_IsRunning = false;
+				m_IsSneaking = false;
+				m_IsStandingStill = true;
+			} else {
+				m_IsStandingStill = false;
+			}
+
+			CheckIdChangeCoolDown ();
+
+			if (isIdChangePossible)
+				ChangeIndentity ();
 
             if (m_CharacterController.isGrounded)
             {
@@ -214,10 +250,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
+            // keep track of whether or not the character is walking or running or sneaking or standing still
+
 			m_IsWalking = !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey (KeyCode.LeftControl);
 			m_IsRunning = Input.GetKey (KeyCode.LeftShift);
 			m_IsSneaking = Input.GetKey (KeyCode.LeftControl);
+
 #endif
             // set the desired speed to be walking or running
 			speed = m_IsWalking ? m_WalkSpeed : m_IsSneaking ? m_SneakSpeed : m_RunSpeed;
@@ -260,5 +298,67 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
-    }
+
+		private bool CheckMovement() {
+			var displacement = transform.position - oldPosition;
+			oldPosition = transform.position;
+
+			return displacement.magnitude > 0.001;
+		}
+
+
+		// Identity Change and corresponding parameter changes
+		private void ChangeIndentity(){
+			if (Input.GetKeyDown ("1")) {
+				Debug.Log ("Runner");
+				m_IsRunner = true;
+				m_IsClimber = false;
+				m_IsSwimmer = false;
+
+				m_RunSpeed = 11;
+				m_JumpSpeed = 8;
+
+				lastIdChangeTime = Time.time;
+
+			} else if (Input.GetKeyDown ("2")) {
+				Debug.Log ("Swimmer");
+				m_IsRunner = false;
+				m_IsClimber = false;
+				m_IsSwimmer = true;
+
+				m_RunSpeed = 8;
+				m_JumpSpeed = 8;
+
+				lastIdChangeTime = Time.time;
+
+			} else if (Input.GetKeyDown ("3")) {
+				Debug.Log ("Climber");
+				m_IsRunner = false;
+				m_IsClimber = true;
+				m_IsSwimmer = false;
+
+				m_RunSpeed = 8;
+				m_JumpSpeed = 15;
+
+				lastIdChangeTime = Time.time;
+			}
+		}
+
+		private void CheckIdChangeCoolDown(){
+			Debug.Log (Time.time - lastIdChangeTime);
+			if (Time.time - lastIdChangeTime >= idChangeCoolDown) {
+				Debug.Log ("Id Change possible");
+				isIdChangePossible = true;
+			} else {
+				Debug.Log ("Id Change not possible");
+				isIdChangePossible = false;
+			}
+		}
+
+		private float GetRemainingCoolDownTime(){
+			return idChangeCoolDown - (Time.time - lastIdChangeTime);
+    
+		}
+	}
+
 }

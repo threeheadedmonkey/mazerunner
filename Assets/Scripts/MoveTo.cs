@@ -22,10 +22,10 @@ public class MoveTo : MonoBehaviour
 	public float run_acousticAlertRange;
 	public float walk_acousticAlertRange;
 	public float sneak_acousticAlertRange;
-	private float acousticAlertRange;
-
-
-
+	public float stand_acousticAlertRange;
+	public float acousticAlertRange;
+	public float alertSpeed;
+	public float alertCoolDown;
 
 	private FirstPersonController fpc;
 	private int destPoint = 0;
@@ -36,7 +36,7 @@ public class MoveTo : MonoBehaviour
 	private float runSpeed;
 	private float walkSpeed;
 	private bool visualAlert; 
-
+	private float alertStartTime;
 	//private float playerSpeed;
 	//private PlayerSpeedMode playerSpeedMode; 
 	
@@ -85,14 +85,14 @@ public class MoveTo : MonoBehaviour
 
 		CheckVisualAlert ();
 
-		Debug.Log (visualAlert);
+		//Debug.Log (visualAlert);
 
 		if (playerDistance < acousticAlertRange) {
-			agent.destination = player.position;
-
+			ActivateAlertMode();
 		} else if (visualAlert) {
-			agent.destination = player.position;
-		} else {
+			ActivateAlertMode();
+		} else if (CheckTimeSinceAlert()){
+			agent.speed = 8;
 			agent.destination = points [destPoint].position;
 		}
 		// Choose the next destination point when the agent gets
@@ -118,6 +118,7 @@ public class MoveTo : MonoBehaviour
 	
 		Debug.DrawRay (agent.transform.position, targetDir, Color.cyan);
 		Debug.DrawRay (agent.transform.position, fwd * visualAlertRange, Color.yellow);
+	
 
 		/*if (Physics.Raycast(agent.transform.position, fwd, out hit, 50.0F)) {
 			Debug.Log (hit.collider.gameObject.name);
@@ -134,10 +135,6 @@ public class MoveTo : MonoBehaviour
 				}
 			}
 		}
-
-
-
-
 	}
 
     void SetAcousticAlertRange () {
@@ -145,9 +142,25 @@ public class MoveTo : MonoBehaviour
 			acousticAlertRange = run_acousticAlertRange;
 		} else if (fpc.m_IsSneaking) {
 			acousticAlertRange = sneak_acousticAlertRange;
+		} else if (fpc.m_IsStandingStill) {
+			acousticAlertRange = stand_acousticAlertRange;
 		} else {
 			acousticAlertRange = walk_acousticAlertRange;
 		}
 	}
 
+	void ActivateAlertMode() {
+		agent.destination = player.position;
+		agent.speed = alertSpeed;
+
+		alertStartTime = Time.time;
+	}
+
+	bool CheckTimeSinceAlert(){
+		if (Time.time - alertStartTime > alertCoolDown) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

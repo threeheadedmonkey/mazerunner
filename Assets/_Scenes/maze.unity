@@ -691,7 +691,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -729,6 +729,10 @@ MonoBehaviour:
   run_acousticAlertRange: 80
   walk_acousticAlertRange: 50
   sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &240965508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -954,10 +958,14 @@ MonoBehaviour:
   - {fileID: 2078931736}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &267019995
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1061,10 +1069,14 @@ MonoBehaviour:
   - {fileID: 857576602}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 15
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &277827785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1654,10 +1666,14 @@ MonoBehaviour:
   - {fileID: 135059602}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &398890978
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2099,6 +2115,26 @@ Prefab:
     - target: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_IsSneaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_GravityMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_StickToGroundForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_JumpSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: idChangeCoolDown
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
@@ -2752,10 +2788,14 @@ MonoBehaviour:
   - {fileID: 664667945}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &641278585
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3637,10 +3677,14 @@ MonoBehaviour:
   - {fileID: 1861633798}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &914309713
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5661,10 +5705,14 @@ MonoBehaviour:
   - {fileID: 713349377}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &1513579655
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6098,10 +6146,14 @@ MonoBehaviour:
   - {fileID: 1058436947}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &1618433199
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6461,10 +6513,14 @@ MonoBehaviour:
   - {fileID: 1722439356}
   player: {fileID: 1386012174}
   gameOver: {fileID: 295345046}
-  visualAlertRange: 0
-  run_acousticAlertRange: 25
-  walk_acousticAlertRange: 15
-  sneak_acousticAlertRange: 5
+  visualAlertRange: 150
+  run_acousticAlertRange: 80
+  walk_acousticAlertRange: 50
+  sneak_acousticAlertRange: 15
+  stand_acousticAlertRange: 0
+  acousticAlertRange: 0
+  alertSpeed: 11
+  alertCoolDown: 10
 --- !u!195 &1704900131
 NavMeshAgent:
   m_ObjectHideFlags: 0
