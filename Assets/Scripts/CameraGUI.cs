@@ -12,8 +12,8 @@ public class CameraGUI : MonoBehaviour {
     public Text distanceDisplay;
     public Text gameOver;
     public Text cooldownDisplay;
+	public Text spotted;
     public Transform redScreen;
-    public Transform blueScreen; // temporäre Lösung für das Wasser
 
     private float distanceLeft;
     private float coolDown;
@@ -27,6 +27,7 @@ public class CameraGUI : MonoBehaviour {
     void Start()
     {
         gameOver.enabled = false;
+		spotted.enabled = false;
         distanceLeft = Vector3.Distance(player.position, finish.position);
 
         distanceToNPC = 100;

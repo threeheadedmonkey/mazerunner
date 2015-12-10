@@ -11,5 +11,6 @@ Wasserflächen ausbessern
 Kennzeichen, falls man fokussiert wird:
 Änderung Audio,
 evt. Blinken des roten Bildschirms
+Anzeigen wenn man gesehen wurde
 
 "Verstecke", in denen man still stehen bleiben kann und übersehen wird.

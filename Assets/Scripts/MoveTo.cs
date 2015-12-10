@@ -26,6 +26,7 @@ public class MoveTo : MonoBehaviour
 	public float acousticAlertRange;
 	public float alertSpeed;
 	public float alertCoolDown;
+	public Text spotted;
 
 	private FirstPersonController fpc;
 	private int destPoint = 0;
@@ -163,12 +164,15 @@ public class MoveTo : MonoBehaviour
 		agent.speed = alertSpeed;
 
 		alertStartTime = Time.time;
+
+		spotted.enabled = true;
 	}
 
 	bool CheckTimeSinceAlert(){
 		if (Time.time - alertStartTime > alertCoolDown) {
 			return true;
 		} else {
+			spotted.enabled = false;
 			return false;
 		}
 	}
