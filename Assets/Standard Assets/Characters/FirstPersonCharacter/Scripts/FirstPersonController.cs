@@ -317,7 +317,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_IsClimber = false;
 				m_IsSwimmer = false;
 
-				m_RunSpeed = 11;
+				m_RunSpeed = 12;
 				m_JumpSpeed = 8;
 
 				lastIdChangeTime = Time.time;
