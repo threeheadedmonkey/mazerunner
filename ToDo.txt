@@ -1,0 +1,13 @@
+Evt. Sprint-Geschwindigkeit erhöhen
+
+NPC Bug:
+Bleiben stehen, wenn man auf einem für sie unüberquerbaren Hindernis steht
+(Schwimmfläche, Sprungfläche)
+
+Labyrinth erweitern
+
+Wasserflächen ausbessern
+
+Kennzeichen, falls man fokussiert wird:
+Änderung Audio,
+evt. Blinken des roten Bildschirms
