@@ -13,7 +13,9 @@ public class CameraGUI : MonoBehaviour {
     public Text gameOver;
     public Text cooldownDisplay;
 	public Text spotted;
+    public Text safePlaceText;
     public Transform redScreen;
+
 
     private float distanceLeft;
     private float coolDown;
@@ -28,6 +30,7 @@ public class CameraGUI : MonoBehaviour {
     {
         gameOver.enabled = false;
 		spotted.enabled = false;
+        safePlaceText.enabled = false;
         distanceLeft = Vector3.Distance(player.position, finish.position);
 
         distanceToNPC = 100;
@@ -37,6 +40,7 @@ public class CameraGUI : MonoBehaviour {
         redScreen.GetComponent<SpriteRenderer>().material.color = screenColor;
 
         isSwimming = false;
+
     }
 
     // Update is called once per frame

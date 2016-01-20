@@ -27,6 +27,7 @@ public class MoveTo : MonoBehaviour
 	public float alertSpeed;
 	public float alertCoolDown;
 	public Text spotted;
+    public Transform spottedAudio;
 
 	private FirstPersonController fpc;
 	private int destPoint = 0;
@@ -78,28 +79,32 @@ public class MoveTo : MonoBehaviour
 		// cycling to the start if necessary.
 		destPoint = (destPoint + 1) % points.Length;
 	}
-	
-	
-	void Update () {
 
-		playerDistance = Vector3.Distance (agent.transform.position, player.position);
 
-		playerSpeed = fpc.speed;
+    void Update() {
 
-		SetAcousticAlertRange();
+        playerDistance = Vector3.Distance(agent.transform.position, player.position);
 
-		CheckVisualAlert ();
+        playerSpeed = fpc.speed;
 
-		//Debug.Log (visualAlert);
+        SetAcousticAlertRange();
 
-		if (playerDistance < acousticAlertRange) {
-			ActivateAlertMode();
-		} else if (visualAlert) {
-			ActivateAlertMode();
-		} else if (CheckTimeSinceAlert()){
-			agent.speed = 8;
-			agent.destination = points [destPoint].position;
-		}
+        CheckVisualAlert();
+
+        //Debug.Log (visualAlert);
+
+        if (fpc.isSafe) DeactivateAlertMode();
+
+        if (!fpc.isSafe) { 
+            if (playerDistance < acousticAlertRange) {
+                ActivateAlertMode();
+            } else if (visualAlert) {
+                ActivateAlertMode();
+            } else if (CheckTimeSinceAlert()) {
+                agent.speed = 8;
+                agent.destination = points[destPoint].position;
+            }
+        }
 
         if(playerDistance < 50 )
         {
@@ -160,13 +165,15 @@ public class MoveTo : MonoBehaviour
 	}
 
 	void ActivateAlertMode() {
-		agent.destination = player.position;
-		agent.speed = alertSpeed;
+		    agent.destination = player.position;
+		    agent.speed = alertSpeed;
 
-		alertStartTime = Time.time;
+		    alertStartTime = Time.time;
 
-		spotted.enabled = true;
-	}
+		    spotted.enabled = true;
+            AudioSource audio = spottedAudio.GetComponent<AudioSource>();
+            audio.Play();
+    }
 
 	public void DeactivateAlertMode() {
 		Debug.Log ("----------------------");

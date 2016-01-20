@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class SafePlace : MonoBehaviour {
 
 	public Transform player;
 	public FirstPersonController fps;
 	public MoveTo agent;
+    public Text safePlaceText;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,7 @@ public class SafePlace : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        Debug.Log("test");
 	}
 
 	void OnCollisionEnter(Collision col)
@@ -25,17 +27,17 @@ public class SafePlace : MonoBehaviour {
 			Debug.Log("----------------------");
 			Debug.Log("-----  SAVEPLACE");
 			Debug.Log("----------------------");
+            safePlaceText.enabled = true;
+            fps.isSafe = true;
 
 			//agent.DeactivateAlertMode();
 		}
-		
-		//gameOver.enabled = true;
-		
-		/*   if (col.gameObject.name == "FPSController")
-           {
-               screenColor = blueScreen.GetComponent<Renderer>().material.color;
-               screenColor.a = 1.0f;
-               blueScreen.GetComponent<Renderer>().material.color = screenColor;
-           }*/
 	}
+
+    void OnCollisionExit(Collision col)
+    {
+        Debug.Log("no more safe place");
+        fps.isSafe = false;
+        safePlaceText.enabled = false;
+    }
 }

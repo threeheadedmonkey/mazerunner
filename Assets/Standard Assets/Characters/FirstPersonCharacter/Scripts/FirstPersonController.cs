@@ -15,6 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public bool m_IsSneaking;
 		public bool m_IsRunning;
 		public bool m_IsStandingStill;
+        public bool isSafe;
 
 		private Vector3 oldPosition;
 
@@ -81,6 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			oldPosition = transform.position;
 			m_IsRunner = true;
 			isIdChangePossible = true;
+            isSafe = false;
         }
 
 
