@@ -1388,6 +1388,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &240965508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1676,6 +1677,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &267019995
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1788,6 +1790,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &277827785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2386,6 +2389,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &398890978
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2733,7 +2737,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Name
@@ -3632,6 +3636,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &641278585
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4679,6 +4684,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &914309713
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5467,6 +5473,7 @@ RectTransform:
   - {fileID: 234151030}
   - {fileID: 1643058213}
   - {fileID: 1211593702}
+  - {fileID: 1475250973}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
@@ -7184,6 +7191,104 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1474068234}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1475250972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1475250973}
+  - 82: {fileID: 1475250974}
+  m_Layer: 0
+  m_Name: spottedAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475250973
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475250972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -132.199997, y: -214.800003, z: -235.199997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1138985088}
+  m_RootOrder: 7
+--- !u!82 &1475250974
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475250972}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9e6749a4628aac240a2fe7acfa1e64e6, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1513579650
 GameObject:
   m_ObjectHideFlags: 0
@@ -7270,6 +7375,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &1513579655
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7743,6 +7849,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &1618433199
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8312,6 +8419,7 @@ MonoBehaviour:
   alertSpeed: 10
   alertCoolDown: 5
   spotted: {fileID: 1643058214}
+  spottedAudio: {fileID: 1475250973}
 --- !u!195 &1704900131
 NavMeshAgent:
   m_ObjectHideFlags: 0
