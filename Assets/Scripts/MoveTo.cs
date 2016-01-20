@@ -168,6 +168,12 @@ public class MoveTo : MonoBehaviour
 		spotted.enabled = true;
 	}
 
+	public void DeactivateAlertMode() {
+		Debug.Log ("----------------------");
+		Debug.Log ("------- here");
+		agent.destination = points [destPoint].position;
+	}
+
 	bool CheckTimeSinceAlert(){
 		if (Time.time - alertStartTime > alertCoolDown) {
 			return true;
