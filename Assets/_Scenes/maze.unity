@@ -719,9 +719,8 @@ MonoBehaviour:
   distanceDisplay: {fileID: 710270314}
   gameOver: {fileID: 295345046}
   cooldownDisplay: {fileID: 658466823}
-  spotted: {fileID: 0}
+  spotted: {fileID: 1643058214}
   redScreen: {fileID: 257310153}
-  blueScreen: {fileID: 0}
 --- !u!136 &109601641
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7282,7 +7281,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 75, y: 0}
-  m_SizeDelta: {x: 300, y: 30}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1643058214
 MonoBehaviour:
@@ -7296,7 +7295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: .823529422, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7305,7 +7304,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63bbc53b8cd8f7140b9de2ea4de5e691, type: 3}
-    m_FontSize: 25
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
