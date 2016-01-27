@@ -12,6 +12,7 @@ public class CameraGUI : MonoBehaviour {
     public Text distanceDisplay;
     public Text gameOver;
     public Text cooldownDisplay;
+    public Text activeIDDisplay;
 	public Text spotted;
     public Text safePlaceText;
     public Transform redScreen;
@@ -48,20 +49,30 @@ public class CameraGUI : MonoBehaviour {
     {
         distanceLeft = Vector3.Distance(player.position, finish.position);
         distanceDisplay.text = distanceLeft.ToString("F0");
-        
-        if( controller.m_IsClimber) { 
+
+        if (controller.m_IsClimber)
+        {
             currentIdentity = "Jumper";
-        } else if (controller.m_IsRunner) {
+        }
+        else if (controller.m_IsRunner)
+        {
             currentIdentity = "Runner";
-        } else if( controller.m_IsSwimmer) {
+        }
+        else if (controller.m_IsSwimmer)
+        {
             currentIdentity = "Swimmer";
         }
+        else currentIdentity = "Default";
+
         // coolDown = controller.GetRemainingCoolDownTime();
-        cooldownDisplay.text = currentIdentity + ": " +
+        activeIDDisplay.text = currentIdentity + ": " +
+                Mathf.Round(controller.GetRemainingIdTime() * 100f) / 100f;
+
+        cooldownDisplay.text = "Switchable in: " +
                 Mathf.Round(controller.GetRemainingCoolDownTime() * 100f) / 100f;
 
         // alpha channel des roten Screens wird durch Gegner-Distanz bestimmt
-        if( distanceToNPC < 50) {
+        if ( distanceToNPC < 50) {
                screenColor = redScreen.GetComponent<Renderer>().material.color;
                screenColor.a = 0.5f - distanceToNPC/100f;
                redScreen.GetComponent<Renderer>().material.color = screenColor;

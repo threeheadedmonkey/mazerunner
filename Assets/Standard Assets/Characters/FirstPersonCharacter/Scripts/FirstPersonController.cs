@@ -88,6 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_IsDefault = true;
 			isIdChangePossible = true;
             isSafe = false;
+            lastIdChangeTime = Time.time - idChangeCoolDown;
        }
 
 
@@ -154,7 +155,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_IsStandingStill = false;
 			}
 
-			CheckCoolDowns ();
+			CheckCoolDowns();
 
 			if (isIdChangePossible)
 				ChangeIndentity ();
@@ -385,11 +386,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_RunSpeed = 10;
 			m_JumpSpeed = 8;
 
-		}
+        }
 
-//		public float GetRemainingIdTime {
-//
-//		}
+		public float GetRemainingIdTime() {
+          float remainingIDTime = idActiveTime - (Time.time - lastIdChangeTime);
+            if (remainingIDTime > 0) return remainingIDTime;
+            else return 0;
+		}
 
 		public float GetRemainingCoolDownTime(){
             float remainingCooldown = idChangeCoolDown - (Time.time - lastIdChangeTime);
@@ -397,6 +400,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else return 0;
     
 		}
-	}
+
+    }
 
 }
