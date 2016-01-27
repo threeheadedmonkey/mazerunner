@@ -177,7 +177,7 @@ public class MoveTo : MonoBehaviour
 
 	public void DeactivateAlertMode() {
 		Debug.Log ("----------------------");
-		Debug.Log ("------- here");
+		Debug.Log ("deactivate");
 		agent.destination = points [destPoint].position;
         spotted.enabled = false;
     }

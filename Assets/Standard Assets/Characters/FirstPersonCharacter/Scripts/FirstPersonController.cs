@@ -1,8 +1,9 @@
-using System;
+ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -30,10 +31,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public bool m_IsRunner;
 		public bool m_IsSwimmer;
 		public bool m_IsClimber;
+		public bool m_IsDefault;
 		public float idChangeCoolDown;
+		public float idActiveTime;
 		public bool isIdChangePossible;
 
 		private float lastIdChangeTime;
+
+		public Slider distanceSlider;
 
 
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
@@ -80,10 +85,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
 
 			oldPosition = transform.position;
-			m_IsRunner = true;
+			m_IsDefault = true;
 			isIdChangePossible = true;
             isSafe = false;
-        }
+       }
 
 
         // Update is called once per frame
@@ -149,7 +154,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_IsStandingStill = false;
 			}
 
-			CheckIdChangeCoolDown ();
+			CheckCoolDowns ();
 
 			if (isIdChangePossible)
 				ChangeIndentity ();
@@ -318,46 +323,73 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_IsRunner = true;
 				m_IsClimber = false;
 				m_IsSwimmer = false;
+				m_IsDefault = false;
 
 				m_RunSpeed = 12;
 				m_JumpSpeed = 8;
 
 				lastIdChangeTime = Time.time;
 
+
 			} else if (Input.GetKeyDown ("2")) {
 				Debug.Log ("Swimmer");
 				m_IsRunner = false;
 				m_IsClimber = false;
 				m_IsSwimmer = true;
+				m_IsDefault = false;
 
 				m_RunSpeed = 8;
 				m_JumpSpeed = 8;
 
 				lastIdChangeTime = Time.time;
 
+
 			} else if (Input.GetKeyDown ("3")) {
 				Debug.Log ("Climber");
 				m_IsRunner = false;
 				m_IsClimber = true;
 				m_IsSwimmer = false;
+				m_IsDefault = false;
 
 				m_RunSpeed = 8;
 				m_JumpSpeed = 15;
 
 				lastIdChangeTime = Time.time;
+
 			}
 		}
 
-		private void CheckIdChangeCoolDown(){
+		private void CheckCoolDowns(){
 			//Debug.Log (Time.time - lastIdChangeTime);
-			if (Time.time - lastIdChangeTime >= idChangeCoolDown) {
-				Debug.Log ("Id Change possible");
-				isIdChangePossible = true;
-			} else {
-				Debug.Log ("Id Change not possible");
+			if (m_IsDefault) {
+				if (Time.time - lastIdChangeTime >= idChangeCoolDown) {
+					isIdChangePossible = true;
+				} else {
+					isIdChangePossible = false;
+				}
+			} else if (!m_IsDefault) {
 				isIdChangePossible = false;
+				if (Time.time - lastIdChangeTime >= idActiveTime) {
+					SetDefaultIdentity ();
+				}
+			
 			}
 		}
+
+		private void SetDefaultIdentity() {
+			m_IsRunner = false;
+			m_IsSwimmer = false;
+			m_IsClimber = false;
+			m_IsDefault = true;
+
+			m_RunSpeed = 10;
+			m_JumpSpeed = 8;
+
+		}
+
+//		public float GetRemainingIdTime {
+//
+//		}
 
 		public float GetRemainingCoolDownTime(){
             float remainingCooldown = idChangeCoolDown - (Time.time - lastIdChangeTime);
