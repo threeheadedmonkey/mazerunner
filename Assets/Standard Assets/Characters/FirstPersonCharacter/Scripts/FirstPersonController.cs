@@ -349,7 +349,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		}
 
 		private void CheckIdChangeCoolDown(){
-			Debug.Log (Time.time - lastIdChangeTime);
+			//Debug.Log (Time.time - lastIdChangeTime);
 			if (Time.time - lastIdChangeTime >= idChangeCoolDown) {
 				Debug.Log ("Id Change possible");
 				isIdChangePossible = true;

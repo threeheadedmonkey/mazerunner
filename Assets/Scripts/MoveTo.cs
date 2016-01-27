@@ -170,16 +170,17 @@ public class MoveTo : MonoBehaviour
 
 		    alertStartTime = Time.time;
 
-		    spotted.enabled = true;
             AudioSource audio = spottedAudio.GetComponent<AudioSource>();
             audio.Play();
+            spotted.enabled = true;
     }
 
 	public void DeactivateAlertMode() {
 		Debug.Log ("----------------------");
 		Debug.Log ("------- here");
 		agent.destination = points [destPoint].position;
-	}
+        spotted.enabled = false;
+    }
 
 	bool CheckTimeSinceAlert(){
 		if (Time.time - alertStartTime > alertCoolDown) {

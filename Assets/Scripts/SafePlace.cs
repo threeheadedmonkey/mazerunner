@@ -17,16 +17,16 @@ public class SafePlace : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("test");
+        //Debug.Log("test");
 	}
 
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.name == "FPSController")
 		{	
-			Debug.Log("----------------------");
+			//Debug.Log("----------------------");
 			Debug.Log("-----  SAVEPLACE");
-			Debug.Log("----------------------");
+			//Debug.Log("----------------------");
             safePlaceText.enabled = true;
             fps.isSafe = true;
 
