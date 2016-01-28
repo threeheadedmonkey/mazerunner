@@ -89,6 +89,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			isIdChangePossible = true;
             isSafe = false;
             lastIdChangeTime = Time.time - idChangeCoolDown;
+
+			m_RunSpeed = 10;
+	
        }
 
 

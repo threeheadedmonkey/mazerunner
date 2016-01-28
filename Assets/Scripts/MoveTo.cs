@@ -122,6 +122,9 @@ public class MoveTo : MonoBehaviour
         if (col.gameObject.name == "FPSController")
         {
             gameOver.enabled = true;
+			Time.timeScale = 0;
+			Application.LoadLevel(Application.loadedLevel);
+			Time.timeScale = 1;
         }
     }
 
